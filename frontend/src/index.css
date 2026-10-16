@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+  
+  body {
+    overflow-x: hidden;
+    background-color: #FFF8EE;
+    color: #3B261C;
+  }
+
+  h1, h2, h3, h4, .font-serif {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FFF8EE;
+}
+::-webkit-scrollbar-thumb {
+  background: #E87532;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #D05F20;
+}
+
+/* Glassmorphism effects */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(232, 117, 50, 0.15);
+}
+
+.glass-dark {
+  background: rgba(59, 38, 28, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 200, 87, 0.2);
+}
+
+/* Shimmer animation for badges and highlights */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-shimmer {
+  animation: shimmer 2.5s infinite;
+}
+
+/* Floating animation */
+@keyframes softFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-soft-float {
+  animation: softFloat 4s ease-in-out infinite;
+}
+
+/* Print styling for QR digital menu */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #printable-qr-menu, #printable-qr-menu * {
+    visibility: visible;
+  }
+  #printable-qr-menu {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+}

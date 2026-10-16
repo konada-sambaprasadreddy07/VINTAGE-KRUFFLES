@@ -1,0 +1,14 @@
+{
+  "name": "vintage-kruffles-workspace",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "dev": "node -e \"const { spawn } = require('child_process'); const b = spawn('npm', ['--prefix', 'backend', 'run', 'dev'], { shell: true, stdio: 'inherit' }); const f = spawn('npm', ['--prefix', 'frontend', 'run', 'dev'], { shell: true, stdio: 'inherit' }); process.on('SIGINT', () => { b.kill(); f.kill(); process.exit(); });\"",
+    "build": "npm --prefix frontend run build && npm --prefix backend run build",
+    "db:generate": "npm --prefix backend run prisma:generate",
+    "db:push": "npm --prefix backend run prisma:push",
+    "seed": "npm --prefix backend run seed"
+  }
+}
